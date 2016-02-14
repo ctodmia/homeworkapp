@@ -1,0 +1,32 @@
+<div class="container">Sign in
+	<div input-field>
+	  <input type="text" ng-model="sign.firstname" length="150">
+	  <label>Enter First Name</label>
+	</div>
+	<div input-field>
+	  <input type="text" ng-model="sign.lastname" length="150">
+	  <label>Enter Last Name</label>
+
+	</div>
+	<div input-field>
+	  <input type="text" ng-model="sign.username" length="150">
+	  <label>Enter a Username</label>
+	</div>
+	<ul>
+	<li> 
+		<p>
+      <input type="checkbox" id="student" />
+      <label for="student">Student</label>
+    </p>
+	</li>
+	<li>
+		<p>
+	    <input type="checkbox" id="teach" />
+	    <label for="teach">Teacher</label>
+	  </p>
+	</li>
+	</ul>
+	</br>
+
+	<button class="waves-effect waves-light btn" ui-sref="assignmentlist">View Assignments</button>
+</div>

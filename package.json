@@ -1,0 +1,35 @@
+{
+  "name": "homeworkapp",
+  "version": "1.0.0",
+  "description": "workflow for students and teachers to manage workflow",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctodmia/homeworkapp.git"
+  },
+  "keywords": [
+    "nodejs",
+    "angularjs",
+    "expressjs",
+    "mongodb",
+    "homework",
+    "edutech"
+  ],
+  "author": "Carine Todmia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctodmia/homeworkapp/issues"
+  },
+  "homepage": "https://github.com/ctodmia/homeworkapp#readme",
+  "dependencies": {
+    "angular-materialize": "^0.1.2",
+    "body-parser": "^1.14.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.3.5"
+  }
+}
