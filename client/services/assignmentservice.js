@@ -15,8 +15,8 @@ angular.module('homework')
 		};
 
 		obj.getOne = function(id) {
-			return $http.get('/individualwork' + id).then(function(res) {
-				console.log('this is res', res)
+			return $http.get('/individualwork/' + id).then(function(res) {
+				return res.data;
 			})
 		}
 

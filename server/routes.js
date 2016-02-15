@@ -37,5 +37,21 @@ module.exports = function(app) {
 		});
 	});
 
+	app.param('assigned', function(req, res, next, id) {
+	  var query = Question.findById(id);
+
+	  query.exec(function (err, topic){
+	    if (err) { return next(err); }
+	    if (!topic) { return next(new Error('can\'t find post')); }
+
+	    req.assignment = topic;
+	    return next();
+	  });
+	});
+
+	app.get('/individualwork/:assigned', function(req, res) {
+		res.json(req.assignment)
+	})
+
 
 };

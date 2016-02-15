@@ -30,7 +30,7 @@ angular.module('homework', [
 		controller: 'AssignmentController',
 		resolve: {
 			Topic: ['$stateParams', 'Assign', function($stateParams, Assign) {
-				Assign.getOne($stateParams.id);
+				return Assign.getOne($stateParams.id);
 			}]
 
 		}
