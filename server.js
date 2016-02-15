@@ -9,7 +9,6 @@ var config = require('./server/config.js')
 var port = process.env.PORT || 8080;
 var uri = config.MONGO_URI;
 
-activateRoutes(app);
 mongoose.connect(uri);
 var db = mongoose.connection;
 db.on('error', function(err){
@@ -32,4 +31,5 @@ app.use(express.static(__dirname + '/client'));
 app.use(express.static(__dirname + '/client/bower_components'));
 app.listen(port);
 console.log('Meet me at the port...its going down' + port);
+activateRoutes(app);
 module.exports = app;

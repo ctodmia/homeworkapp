@@ -1,1 +1,7 @@
-<button class="waves-effect waves-light btn" ui-sref="newassignment">New Assignment</button>
+<div class="container">
+	
+	<div ng-repeat="work in allWork">
+		<a href="#/assignment/{{work._id}}">{{work.title}}</a>
+	</div>
+	<button class="waves-effect waves-light btn" ui-sref="newassignment">New Assignment</button>
+</div>

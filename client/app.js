@@ -16,13 +16,24 @@ angular.module('homework', [
 	.state('assignmentlist', {
 		url: '/assignmentlist',
 		templateUrl: 'views/assignmentListView.html',
-		// controller: 'Assignment as asign'
+		controller: 'AssignmentListController',
+		resolve: {
+			Work: ['Assign', function(Assign) {
+				return Assign.allWork();
+			}]
+		}
 	})
 
 	.state('assignment', {
-		url: '/assignment',
+		url: '/assignment/{id}',
 		templateUrl: 'views/assignmentView.html',
-		// controller: 'Assignment as asign'
+		controller: 'AssignmentController',
+		resolve: {
+			Topic: ['$stateParams', 'Assign', function($stateParams, Assign) {
+				Assign.getOne($stateParams.id);
+			}]
+
+		}
 	})
 	.state('newassignment', {
 		url: '/newassignment',

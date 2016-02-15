@@ -1,7 +1,12 @@
-var Question = require('./models/QuestionSchema.js');
-var StudentSchema = require('./models/StudentSchema.js');
+var Question = require('./models/QuestionSchema.js').question;
+var StudentSchema = require('./models/StudentSchema.js').student;
 
 module.exports = function(app) {
+	app.use(function (error, req, res, next){
+	    //Catch json error
+	    console.log('this is the err', req.body);
+	    next();
+	});
 
 	app.all('/*', function(req, res, next) {
 	  res.header("Access-Control-Allow-Origin", "*");
@@ -10,7 +15,27 @@ module.exports = function(app) {
 	  next();
 	});
 
-	
+	app.post('/newassignment', function(req, res, next) {
+		question = new Question();
+		question.title = req.body.title;
+		question.topic = req.body.question;
+		question.date = req.body.date;
+		question.save(function(err, quest) {
+			if(err) {return err}
+
+			console.log('this is the question you saved', quest);
+		});
+	});
+
+	app.get('/allhomework', function(req, res) {
+		Question.find({}, function(err, data) {
+			if(err) {
+				return err;
+			}
+
+			res.json(data);
+		});
+	});
 
 
 };
