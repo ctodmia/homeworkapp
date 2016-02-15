@@ -27,7 +27,7 @@ angular.module('homework', [
 	.state('newassignment', {
 		url: '/newassignment',
 		templateUrl: 'views/newAssignmentView.html',
-		// controller: 'Assignment as asign'
+		controller: 'NewAssignmentController'
 	})
 
 	$urlRouterProvider.otherwise('/');
