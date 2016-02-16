@@ -1,4 +1,5 @@
 angular.module('homework')
-	.controller('SigninController', function(){
+	.controller('SigninController',['$scope', function($scope){
 		console.log('this is the home controller')
-	})
+		$scope.usertype;
+	}])

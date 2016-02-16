@@ -10,7 +10,7 @@ angular.module('homework', [
 	.state('home', {
 		url: '/',
 		templateUrl: 'views/signinView.html',
-		controller: 'SigninController as sign'
+		controller: 'SigninController'
 	})
 
 	.state('assignmentlist', {

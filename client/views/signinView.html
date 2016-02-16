@@ -12,20 +12,23 @@
 	  <input type="text" ng-model="sign.username" length="150">
 	  <label>Enter a Username</label>
 	</div>
-	<ul class="teach">
-	<li> 
-		<p>
-      <input type="checkbox" id="student" />
-      <label for="student">Student</label>
-    </p>
-	</li>
-	<li>
-		<p>
-	    <input type="checkbox" id="teach" />
-	    <label for="teach">Teacher</label>
+	<p>
+	    <div class="input-field col s12">
+	     <select class="browser-default" ng-model="usertype">
+	     <label>UserType</label>
+	     </br>
+	     </br>
+	         <option value="" disabled selected>I am signing in as a...</option>
+	               <option value="1">Student</option>
+	               <option value="2">Teacher</option>
+	               
+	     </select>
+	    </div>
 	  </p>
 	</li>
 	</ul>
+	</br>
+	</br>
 	</br>
 
 	<button class="waves-effect waves-light btn" ui-sref="assignmentlist">View Assignments</button>
