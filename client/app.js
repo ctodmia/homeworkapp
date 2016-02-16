@@ -10,7 +10,25 @@ angular.module('homework', [
 	.state('home', {
 		url: '/',
 		templateUrl: 'views/signinView.html',
-		controller: 'SigninController'
+		controller: 'SigninController',
+		resolve: {
+			onEnter: ['$state', 'Auth', function($state, Auth) {
+				if(Auth.isLoggedIn()) {
+					$state.go('studentlist');
+				}
+			}]	
+		}
+	})
+
+	.state('studentlist', {
+		url: '/studentlist',
+		templateUrl: 'views/studentListView.html',
+		controller: 'StudentListController',
+		resolve: {
+			User: ['Student', function(Student) {
+				return Student.getAll();
+			}]
+		}
 	})
 
 	.state('assignmentlist', {
@@ -40,6 +58,7 @@ angular.module('homework', [
 		templateUrl: 'views/newAssignmentView.html',
 		controller: 'NewAssignmentController'
 	})
+
 
 	$urlRouterProvider.otherwise('/');
 }])

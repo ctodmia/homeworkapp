@@ -24,8 +24,7 @@ userSchema.methods.generateJWT = function() {
 	    _id: this._id,
 	    username: this.username,
 	    exp: parseInt(exp.getTime() / 1000),
-  	}, 
-  	config.JWT_TOKEN);
+  	}, config.JWT_TOKEN);
 };
 
 var User = mongoose.model("User", userSchema);

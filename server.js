@@ -9,6 +9,9 @@ var methodOverride = require('method-override');
 var activateRoutes = require('./server/routes.js')
 var config = require('./server/config.js')
 
+require('./server/models/UserSchema.js');
+require('./server/models/QuestionSchema.js')
+require('./server/passport.js')
 var port = process.env.PORT || 8080;
 var uri = config.MONGO_URI;
 
@@ -20,6 +23,8 @@ db.on('error', function(err){
 db.once('open', function(){
   console.log('Your connecting to your database');
 });
+
+
 
 app.use(bodyParser.json());
 app.use (function (error, req, res, next){

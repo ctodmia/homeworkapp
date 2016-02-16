@@ -1,8 +1,10 @@
-var Question = require('./models/QuestionSchema.js').question;
-var User = require('./models/UserSchema.js').user;
-var passport = require('passport');
+var express = require('express');
 var jwt = require('express-jwt');
+var mongoose = require('mongoose');
+var passport = require('passport');
 var config = require('./config.js');
+var User = require('./models/UserSchema.js').user;
+var Question = require('./models/QuestionSchema.js').question;
 var auth = jwt({secret: config.JWT_TOKEN, userProperty: 'payload'});
 
 module.exports = function(app) {
@@ -20,45 +22,60 @@ module.exports = function(app) {
 	});
 
 	app.post('/signup', function(req, res, next) {
-		if(!req.body.username){
-		    return res.status(400).json({message: 'Make sure you fill it all!'});
-		  }
-		var user = new User();
-		user.firstname = req.body.firstname;
-		user.lastname = req.body.lastname;
-		user.username = req.body.username;
-		user.usertype = req.body.usertype;
-		user.save(function(err, newuser) {
-			if(err) {return err} 
+		console.log('this signup req.body', req.body)
+		User.findOne({username: req.body.username}, function(err, founduser) {
+			if(err) {
+				return err;
+			}
+			if(!founduser) {
+				var user = new User();
+				user.firstname = req.body.firstname;
+				user.lastname = req.body.lastname;
+				user.username = req.body.username;
+				user.usertype = req.body.usertype;
+				user.save(function(err, newuser) {
+					if(err) {return err} 
 
-			console.log('this is the new user', newuser);
-			return res.json({token: user.generateJWT(), user: user})
+					console.log('this is the new user', newuser);
+					return res.json({token: user.generateJWT()})
 
+				});
+			}
 		})
+
 	});
 
 	app.post('/login', function(req, res, next) {
-		if(!req.body.username) {
-			return res.status(400).json({message: "Um thats not a known username"});
+		console.log('login req.body', req.body)
+		if(!req.body.username){
+		  return res.status(400).json({message: 'Please fill out all fields'});
 		}
-		passport.authenticate('local', function(err, user, info) {
-			if(err){
-				return err
-			};
-			console.log('authenticated user', user);
-			console.log('authenticated info', info);
-			if(user) {
-				return res.json({token: user.generateJWT()});
-			} else {
-				return res.status(401).json(info);
-			}
 
+		passport.authenticate('local', function(err, user, info){
+		  if(err){ return next(err); }
+		  console.log('this is local authenticated user', user)
+		  if(user){
+		    return res.json({token: user.generateJWT()});
+		  } 
+		  // else {
+		  //   return res.status(401).json(info);
+		  // }
 		})(req, res, next);
 
 	});
 
-	app.post('/newassignment', function(req, res, next) {
+	app.get('/getAllUsers', function(req, res) {
+		User.find({}, function(err, users) {
+			if(err) {
+				return err
+			};
+			res.json(users);
+		});
+	});
+
+	app.post('/newassignment', auth, function(req, res, next) {
 		question = new Question();
+		question.user = req.payload.username;
 		question.title = req.body.title;
 		question.topic = req.body.question;
 		question.date = req.body.date;

@@ -1,0 +1,7 @@
+<div class="container">
+	
+	<div ng-repeat="student in allStudents">
+		<a href="#/user/{{student._id}}">{{student.firstname}}</a>
+	</div>
+	<button class="waves-effect waves-light btn" ui-sref="newassignment">New Assignment</button>
+</div>

@@ -1,7 +1,14 @@
 <main>	
 <div class="container">
 	<div id="login" ng-if="!register">
-		<button class="waves-effect waves-light btn" ui-sref="assignmentlist">Login</button>
+		</br>
+		</br>
+		<input-field>
+			<input type="text" ng-model="username" length="150">
+			<label>Enter First Name</label>
+		</input-field>
+
+		<button class="waves-effect waves-light btn" ng-click="login(username)">Login</button>
 		</br>
 		</br>
 		<p>
@@ -11,22 +18,22 @@
 
 	<div id="register" ng-if="register">
 	Sign in
-	<div input-field>
-	  <input type="text" ng-model="sign.firstname" length="150">
+	<input-field>
+	  <input type="text" ng-model="user.firstname" length="150">
 	  <label>Enter First Name</label>
-	</div>
-	<div input-field>
-	  <input type="text" ng-model="sign.lastname" length="150">
+	</input-field>
+	<input-field>
+	  <input type="text" ng-model="user.lastname" length="150">
 	  <label>Enter Last Name</label>
 
-	</div>
-	<div input-field>
-	  <input type="text" ng-model="sign.username" length="150">
+	</input-field>
+	<input-field>
+	  <input type="text" ng-model="user.username" length="150">
 	  <label>Enter a Username</label>
-	</div>
+	</input-field>
 	<p>
 	    <div class="input-field col s12">
-	     <select class="browser-default" ng-model="usertype">
+	     <select class="browser-default" ng-model="user.usertype">
 	     <label>UserType</label>
 	     </br>
 	     </br>
@@ -39,6 +46,8 @@
 	  </p>
 	</li>
 	</ul>
+	</br>
+		<button class="waves-effect waves-light btn" ng-click="signup(user)">Sign Up</button>
 	</br>
 	<p>
 		<a href="#" ng-click="loginUser()">Existing User Login</a>

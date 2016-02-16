@@ -4,6 +4,7 @@ var db = mongoose.connection;
 
 var questionSchema = new Schema({
 	_pupil: {type: Schema.ObjectId, ref: 'User'},
+	user: String,
 	title: String, 
 	topic: String,
 	date: String,
