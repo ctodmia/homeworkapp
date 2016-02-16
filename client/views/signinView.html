@@ -1,8 +1,15 @@
 <main>	
 <div class="container">
-	<div id="login">
+	<div id="login" ng-if="!register">
 		<button class="waves-effect waves-light btn" ui-sref="assignmentlist">Login</button>
+		</br>
+		</br>
+		<p>
+			<a href="#" ng-click="newUser()">or Signup for a FREE account</a>
+		</p>
 	</div>
+
+	<div id="register" ng-if="register">
 	Sign in
 	<div input-field>
 	  <input type="text" ng-model="sign.firstname" length="150">
@@ -33,9 +40,8 @@
 	</li>
 	</ul>
 	</br>
-	</br>
-	</br>
-
-	<button class="waves-effect waves-light btn" ui-sref="assignmentlist">View Assignments</button>
+	<p>
+		<a href="#" ng-click="loginUser()">Existing User Login</a>
+	</p>
 </div>
 </main>
