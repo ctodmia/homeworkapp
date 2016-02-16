@@ -1,5 +1,5 @@
 var Question = require('./models/QuestionSchema.js').question;
-var StudentSchema = require('./models/StudentSchema.js').student;
+var User = require('./models/UserSchema.js').user;
 
 module.exports = function(app) {
 	app.use(function (error, req, res, next){
@@ -52,6 +52,8 @@ module.exports = function(app) {
 	app.get('/individualwork/:assigned', function(req, res) {
 		res.json(req.assignment)
 	})
+
+	app.post('/userlogin')
 
 
 };
