@@ -7,17 +7,44 @@
 </head>
 <body>
 
+<nav class="navbar-fixed">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo right">QuickWork</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="#" ui-sref="newassignment">Add New</a></li>
+      <li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
+      <li><a href="#" ui-sref="login">Login</a></li>
+      <li><a href="#" ui-sref="login">Logout</a></li>
+      <li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+	    <li><a href="sass.html">Sass</a></li>
+	    <li><a href="badges.html">Components</a></li>
+	    <li><a href="collapsible.html">Javascript</a></li>
+	    <li><a href="mobile.html">Mobile</a></li>
+	</ul>
+  </div>
+</nav>
+
 	<div>
 		<div ui-view></div>
 	</div>
 
-
+	<footer class="page-footer">
+	  <div class="footer-copyright">
+	    <div class="container">
+	    <a class="grey-text text-lighten-4 left" href="http://carinetodmia.com" target="_blank"> © 2014 Carine Todmia </a>
+	    <a class="grey-text text-lighten-4 right" href="http://twitter.com/cinfinitymedia" target="_blank">@cinfinitymedia</a>
+	    </div>
+	  </div>
+	</footer>
 
 
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+<script src="init.js"></script>
 <script src="app.js"></script>
 <script src="controllers/signin.js"></script>
 <script src="controllers/newAssignmentController.js"></script>

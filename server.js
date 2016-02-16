@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+var passport = require('passport');
+var User = require('./server/models/UserSchema.js').user;
+var configPass = require('./server/passport.js');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var activateRoutes = require('./server/routes.js')
@@ -29,6 +32,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/client'));
 app.use(express.static(__dirname + '/client/bower_components'));
+app.use(passport.initialize());
 app.listen(port);
 console.log('Meet me at the port...its going down' + port);
 activateRoutes(app);
