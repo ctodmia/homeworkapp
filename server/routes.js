@@ -170,5 +170,25 @@ module.exports = function(app) {
 		
 	})
 
+	app.param('student', function(req, res, next, id) {
+	  var query = User.findById(id)
+
+	  query.exec(function (err, user){
+	    if (err) { return next(err); }
+	    if (!user) { return next(new Error('can\'t find post')); }
+	    req.user = user;
+	    return next();
+	  });
+	});
+
+	app.get('/individualstudent/:student', function(req, res) {
+		Question.find({}, function(err, question) {
+			if(err) {
+				return err;
+			}
+			res.json({user : req.user, questions : question})
+		})
+	})
+
 
 };

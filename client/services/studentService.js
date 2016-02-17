@@ -8,5 +8,11 @@ angular.module('homework')
 			});
 		};
 
+		user.getOne = function(id) {
+			return $http.get('/individualstudent/' + id).then(function(res) {
+				return res.data;
+			})
+		}
+
 		return user;
 	}])

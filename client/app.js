@@ -31,6 +31,16 @@ angular.module('homework', [
 		}
 	})
 
+	.state('student', {
+		url: '/student/{id}',
+		templateUrl: 'views/studentView.html',
+		controller: 'StudentController',
+		resolve: {
+			User: ['$stateParams', 'Student', function($stateParams, Student) {
+				return Student.getOne($stateParams.id);
+			}]
+		}
+	})
 	.state('assignmentlist', {
 		url: '/assignmentlist',
 		templateUrl: 'views/assignmentListView.html',
