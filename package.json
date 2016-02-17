@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "workflow for students and teachers to manage workflow",
   "main": "server.js",
-  "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ctodmia/homeworkapp.git"
@@ -27,7 +24,6 @@
   "dependencies": {
     "angular-materialize": "^0.1.2",
     "body-parser": "^1.14.2",
-    "bower": "^1.7.7",
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-jwt": "^3.3.0",
