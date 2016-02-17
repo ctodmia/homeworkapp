@@ -5,3 +5,11 @@ section#signin{
 .login-needed li {
 	float: left;
 }
+
+.container.body {
+	margin-top: 50px;
+	height: 450px;
+}
+body {
+	height: 100%
+}
