@@ -56,10 +56,10 @@ module.exports = function(app) {
 			if(err) {
 				return err;
 			}
-			// if(!founduser) {
-			// 	console.log('this is the found login user', founduser);
-			// 	return res.status(400).json({message: 'they dont exist'})
-			// }
+			if(!founduser) {
+				console.log('this is the found login user', founduser);
+				return res.status(400).json({message: 'they dont exist'})
+			}
 			authenticate = passport.authenticate('local');
 			console.log('this is authenticate', authenticate)
 			res.json({token: founduser.generateJWT()})
