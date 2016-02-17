@@ -16,7 +16,9 @@ var port = process.env.PORT || 8080;
 var uri = config.MONGO_URI;
 
 mongoose.connect(uri);
+// var db = mongoose.createConnection('mongodb://test:test@ds011288.mongolab.com:11288/quickhomework')
 var db = mongoose.connection;
+
 db.on('error', function(err){
   console.log('connection error', err);
 });
