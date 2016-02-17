@@ -1,6 +1,7 @@
 section#signin{
 	background-color: orange;
 }
-.teach li {
+
+.login-needed li {
 	float: left;
 }

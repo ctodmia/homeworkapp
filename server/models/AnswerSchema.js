@@ -12,5 +12,4 @@ var Answer = mongoose.model("Answer", answerSchema);
 
 module.exports = {
   answer: Answer
-
 };

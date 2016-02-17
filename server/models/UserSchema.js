@@ -9,16 +9,12 @@ var userSchema = new Schema({
 	lastname: String,
 	username: String,
 	usertype: String,
-	// topics: [{type: Schema.ObjectId, ref: 'Question'}]
 });
 
 userSchema.methods.generateJWT = function() {
-
-  // set expiration to 60 days
   var today = new Date();
   var exp = new Date(today);
   exp.setDate(today.getDate() + 60);
-
   return jwt.sign(
   	{
 	    _id: this._id,

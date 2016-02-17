@@ -14,5 +14,4 @@ var Question = mongoose.model("Question", questionSchema);
 
 module.exports = {
   question: Question
-
 };

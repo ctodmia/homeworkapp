@@ -1,5 +1,6 @@
 angular.module('homework')
 	.factory('Student', ['$http', function($http) {
+		
 		var user = {};
 
 		user.getAll = function() {
@@ -11,8 +12,9 @@ angular.module('homework')
 		user.getOne = function(id) {
 			return $http.get('/individualstudent/' + id).then(function(res) {
 				return res.data;
-			})
-		}
+			});
+		};
 
 		return user;
+
 	}])

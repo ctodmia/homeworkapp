@@ -24,11 +24,8 @@ db.once('open', function(){
   console.log('Your connecting to your database');
 });
 
-
-
 app.use(bodyParser.json());
 app.use (function (error, req, res, next){
-    //Catch json error
     console.log('this is the err', req.body);
     next();
 });

@@ -10,8 +10,6 @@ var auth = jwt({secret: config.JWT_TOKEN, userProperty: 'payload'});
 
 module.exports = function(app) {
 	app.use(function (error, req, res, next){
-	    //Catch json error
-	    console.log('this is the err', req.body);
 	    next();
 	});
 
@@ -23,7 +21,7 @@ module.exports = function(app) {
 	});
 
 	app.post('/signup', function(req, res, next) {
-		console.log('this signup req.body', req.body)
+		
 		User.findOne({username: req.body.username}, function(err, founduser) {
 			if(err) {
 				return err;
@@ -35,20 +33,20 @@ module.exports = function(app) {
 				user.username = req.body.username;
 				user.usertype = req.body.usertype;
 				user.save(function(err, newuser) {
-					if(err) {return err} 
-
-					console.log('this is the new user', newuser);
-					return res.json({token: user.generateJWT()})
-
+					if(err) {
+						return err;
+					} 
+					return res.json({token: user.generateJWT()});
 				});
 			}
-		})
+		});
 
 	});
 
 	app.post('/login', function(req, res, next) {
+		
 		var authenticate;
-		console.log('login req.body', req.body)
+		
 		if(!req.body.username){
 		  return res.status(400).json({message: 'Please fill out all fields'});
 		}
@@ -59,67 +57,75 @@ module.exports = function(app) {
 			}
 			if(!founduser) {
 				console.log('this is the found login user', founduser);
-				return res.status(400).json({message: 'they dont exist'})
+				return res.status(400).json({message: 'they dont exist'});
 			}
 			authenticate = passport.authenticate('local');
-	
-			res.json({token: founduser.generateJWT()})
-
-		})
+			res.json({token: founduser.generateJWT()});
+		});
 
 	});
 
 	app.get('/getAllUsers', function(req, res) {
+		
 		User.find({}, function(err, users) {
 			if(err) {
-				return err
+				return err;
 			};
 			res.json(users);
 		});
+
 	});
 
 	app.post('/newassignment', function(req, res, next) {
+		
 		question = new Question();
 		question.user = req.body.username;
 		question.title = req.body.title;
 		question.topic = req.body.question;
 		question.date = req.body.date;
 		question.save(function(err, quest) {
-			if(err) {return err}
-
-			console.log('this is the question you saved', quest);
+			if(err) {
+				return err;
+			}
+			res.json(quest);
 		});
+
 	});
 
 	app.get('/allhomework', function(req, res) {
+		
 		Question.find({}, function(err, data) {
 			if(err) {
 				return err;
 			}
-
 			res.json(data);
 		});
+
 	});
 
 	app.param('assigned', function(req, res, next, id) {
-	  var query = Question.findById(id);
+	  
+		var query = Question.findById(id);
 
-	  query.exec(function (err, topic){
-	    if (err) { return next(err); }
-	    if (!topic) { return next(new Error('can\'t find post')); }
+		query.exec(function (err, topic){
+			if (err) { 
+				return next(err); 
+			}
+			if (!topic) { 
+				return next(new Error('can\'t find post')); 
+			}
+			req.assignment = topic;
+			return next();
+		});
 
-	    req.assignment = topic;
-	    return next();
-	  });
 	});
 
 	app.get('/individualwork/:assigned', function(req, res) {
-		res.json(req.assignment)
+		res.json(req.assignment);
 	})
 
 	app.post('/individualwork/:assigned/answer', function(req, res) {
-		console.log('can we get the currrent user data in req.body', req.body)
-		console.log('this is the answer assignment', req.assignment)
+
 		User.findOne({username: req.body.author}, function(err, foundUser) {
 			if(err) {
 				return err;
@@ -128,7 +134,6 @@ module.exports = function(app) {
 				console.log('this is the found login user', foundUser);
 				return res.status(400).json({message: 'they dont exist'})
 			}
-			console.log('found user for answering', foundUser)
 			var answer = new Answer();
 			answer._creator = foundUser._id;
 			answer.response = req.body.body;
@@ -137,7 +142,6 @@ module.exports = function(app) {
 				if(err) {
 					return err;
 				}
-				console.log('the saved answer data', data)
 				Question.findOne({_id: req.assignment._id}, function(err, topic) {
 					if(err) {
 						return err;
@@ -145,50 +149,51 @@ module.exports = function(app) {
 					if(!topic) {
 						return res.status(400).json({message: 'they dont exist'})
 					}
-					console.log('this is the topic', topic)
 					topic.responses.push(data);
 					topic.save(function(err, savedtopic) {
 						if(err) {
 							return err;
 						}
-						console.log('saved a topic response', savedtopic)
-					})
-				})
-				res.json(data)
+					});
+				});
+				res.json(data);
 			})
+
 			Answer.findById(answer._id).populate('_creator').exec(function(err, answer) {
 				if(err) {
 					return err;
 				}
-				console.log("this is the answer._creator", answer._creator)
-				console.log("this is the answer", answer);
+			});	
+		});
 
-			})
-			
-		})
-
-		
-	})
+	});
 
 	app.param('student', function(req, res, next, id) {
-	  var query = User.findById(id)
+	  
+		var query = User.findById(id)
 
-	  query.exec(function (err, user){
-	    if (err) { return next(err); }
-	    if (!user) { return next(new Error('can\'t find post')); }
-	    req.user = user;
-	    return next();
-	  });
+		query.exec(function (err, user){
+			if (err) { 
+				return next(err); 
+			}
+			if (!user) { 
+				return next(new Error('can\'t find post')); 
+			}
+			req.user = user;
+			return next();
+		});
+
 	});
 
 	app.get('/individualstudent/:student', function(req, res) {
+		
 		Question.find({}, function(err, question) {
 			if(err) {
 				return err;
 			}
-			res.json({user : req.user, questions : question})
-		})
-	})
+			res.json({user : req.user, questions : question});
+		});
 
+	});
 
 };

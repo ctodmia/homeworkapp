@@ -1,5 +1,6 @@
 angular.module('homework')
 	.controller('NewAssignmentController', ['$scope', 'Assign', function($scope, Assign){
+		
 		var currentTime = new Date();
 		$scope.currentTime = currentTime;
 		$scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -15,30 +16,11 @@ angular.module('homework')
 		$scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
 		
 		$scope.addWork = function () {
-			console.log('this is title', $scope.title)
 			Assign.addNew({
 				title: $scope.title,
 				question: $scope.question,
 				date: $scope.currentTime
 			})
-		};
-		$scope.onStart = function () {
-		    console.log('onStart');
-		};
-		$scope.onRender = function () {
-		    console.log('onRender');
-		};
-		$scope.onOpen = function () {
-		    console.log('onOpen');
-		};
-		$scope.onClose = function () {
-		    console.log('onClose');
-		};
-		$scope.onSet = function () {
-		    console.log('onSet');
-		};
-		$scope.onStop = function () {
-		    console.log('onStop');
 		};
 
 	}])

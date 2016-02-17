@@ -1,7 +1,9 @@
 <div class="container">
+	
 	<ul>
 		<li>{{topic.title}}</li>
 		<li>{{topic.topic}}</li>
+		<li>this item is due{{topic.date}}</li>
 	</ul>
 
 	<div ng-if="permission">
@@ -11,15 +13,12 @@
 		</input-field>
 		</br>
 		<button class="waves-effect waves-light btn" ng-click="submitAnswer(answer)">Submit Answer</button>
-
 	</div>
-
 
 	<div class="login-needed" ng-if="!permission">
-		Sorry you need to be logged in to answer this question
-		<ul>
-			<li><button class="waves-effect waves-light btn" ng-click="reg(register)">SignUp</button></li>
-			<li><button class="waves-effect waves-light btn" ui-sref="home">Login</button></li>
-		</ul>
+		<p>Sorry you need to be logged in to answer this question</p>
+		<button class="waves-effect waves-light btn" ng-click="reg(register)">SignUp</button></li>
+		<button class="waves-effect waves-light btn" ui-sref="home">Login</button></li>
 	</div>
+
 </div>

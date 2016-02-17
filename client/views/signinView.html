@@ -1,56 +1,54 @@
 <main>	
-<div class="container">
-	<div id="login" ng-if="!register">
-		</br>
-		</br>
-		<input-field>
-			<input type="text" ng-model="returnuser.username" length="150">
-			<label>Enter First Name</label>
-		</input-field>
+	<div class="container">
+		
+		<div id="login" ng-if="!register">
+			</br>
+			</br>
+			<input-field>
+				<input type="text" ng-model="returnuser.username" length="150">
+				<label>Enter First Name</label>
+			</input-field>
+			<button class="waves-effect waves-light btn" ng-click="login(returnuser)">Login</button>
+			</br>
+			</br>
+			<p>
+				<a href="#" ng-click="newUser()">or Signup for a FREE account</a>
+			</p>
+		</div>
 
-		<button class="waves-effect waves-light btn" ng-click="login(returnuser)">Login</button>
-		</br>
-		</br>
-		<p>
-			<a href="#" ng-click="newUser()">or Signup for a FREE account</a>
-		</p>
+		<div id="register" ng-if="register">
+			<p>Sign in</p>
+			<input-field>
+			  <input type="text" ng-model="user.firstname" length="150">
+			  <label>Enter First Name</label>
+			</input-field>
+			<input-field>
+			  <input type="text" ng-model="user.lastname" length="150">
+			  <label>Enter Last Name</label>
+			</input-field>
+			<input-field>
+			  <input type="text" ng-model="user.username" length="150">
+			  <label>Enter a Username</label>
+			</input-field>
+			<p>
+			    <div class="input-field col s12">
+				    <select class="browser-default" ng-model="user.usertype">
+					    <label>UserType</label>
+					    </br>
+					    </br>
+				        <option value="" disabled selected>I am signing in as a...</option>
+				        <option value="1">Student</option>
+				        <option value="2">Teacher</option>      
+				    </select>
+			    </div>
+			</p>
+			</br>
+			<button class="waves-effect waves-light btn" ng-click="signup(user)">Sign Up</button>
+			</br>
+			<p>
+				<a href="#" ng-click="loginUser()">Existing User Login</a>
+			</p>
+		</div>
+		
 	</div>
-
-	<div id="register" ng-if="register">
-	Sign in
-	<input-field>
-	  <input type="text" ng-model="user.firstname" length="150">
-	  <label>Enter First Name</label>
-	</input-field>
-	<input-field>
-	  <input type="text" ng-model="user.lastname" length="150">
-	  <label>Enter Last Name</label>
-
-	</input-field>
-	<input-field>
-	  <input type="text" ng-model="user.username" length="150">
-	  <label>Enter a Username</label>
-	</input-field>
-	<p>
-	    <div class="input-field col s12">
-	     <select class="browser-default" ng-model="user.usertype">
-	     <label>UserType</label>
-	     </br>
-	     </br>
-	         <option value="" disabled selected>I am signing in as a...</option>
-	               <option value="1">Student</option>
-	               <option value="2">Teacher</option>
-	               
-	     </select>
-	    </div>
-	  </p>
-	</li>
-	</ul>
-	</br>
-		<button class="waves-effect waves-light btn" ng-click="signup(user)">Sign Up</button>
-	</br>
-	<p>
-		<a href="#" ng-click="loginUser()">Existing User Login</a>
-	</p>
-</div>
 </main>

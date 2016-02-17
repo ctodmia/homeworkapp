@@ -1,6 +1,5 @@
 angular.module('homework', [
-	'ui.router',
-	// 'ui.materialize'
+	'ui.router'
 	])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
@@ -41,6 +40,7 @@ angular.module('homework', [
 			}]
 		}
 	})
+
 	.state('assignmentlist', {
 		url: '/assignmentlist',
 		templateUrl: 'views/assignmentListView.html',
@@ -63,12 +63,13 @@ angular.module('homework', [
 
 		}
 	})
+
 	.state('newassignment', {
 		url: '/newassignment',
 		templateUrl: 'views/newAssignmentView.html',
 		controller: 'NewAssignmentController'
 	})
 
-
 	$urlRouterProvider.otherwise('/');
+
 }])

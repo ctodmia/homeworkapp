@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="homework">
-<head>
-	<title>HomeworkExpress</title>
-	<link rel="stylesheet" type="text/css" href="bower_components/materialize/dist/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body ng-controller="NavbarController">
 
-<nav class="navbar-fixed">
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo right">QuickWork</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="#" ui-sref="newassignment">Add New</a></li>
-      <li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
-      <li><a href="#" ui-sref="studentlist">Students</a></li>
-      <li><a href="#" ui-sref="home">Login</a></li>
-      <li><a href="#" ng-click="logout()">Logout</a></li>
-      <li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
-	    <li><a href="#" ui-sref="newassignment">Add New</a></li>
-		<li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
-		<li><a href="#" ui-sref="home">Login</a></li>
-		<li><a href="#" ui-sref="login">Logout</a></li>
-		<li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
-	</ul>
-  </div>
-</nav>
+	<head>
+		<title>HomeworkExpress</title>
+		<link rel="stylesheet" type="text/css" href="bower_components/materialize/dist/css/materialize.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
 
-	<div>
-		<div ui-view></div>
-	</div>
+	<body ng-controller="NavbarController">
+		<nav class="navbar-fixed">
+			<div class="nav-wrapper">
+				<a href="/" class="brand-logo right">QuickWork</a>
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+				  <li><a href="#" ui-sref="newassignment">Add New</a></li>
+				  <li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
+				  <li><a href="#" ui-sref="studentlist">Students</a></li>
+				  <li><a href="#" ui-sref="home">Login</a></li>
+				  <li><a href="#" ng-click="logout()">Logout</a></li>
+				  <li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+				    <li><a href="#" ui-sref="newassignment">Add New</a></li>
+					<li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
+					<li><a href="#" ui-sref="home">Login</a></li>
+					<li><a href="#" ui-sref="login">Logout</a></li>
+					<li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
+				</ul>
+			</div>
+		</nav>
 
-	<footer class="page-footer">
-	  <div class="footer-copyright">
-	    <div class="container">
-	    <a class="grey-text text-lighten-4 left" href="http://carinetodmia.com" target="_blank"> © 2014 Carine Todmia </a>
-	    <a class="grey-text text-lighten-4 right" href="http://twitter.com/cinfinitymedia" target="_blank">@cinfinitymedia</a>
-	    </div>
-	  </div>
-	</footer>
+		<div class="container body">
+			<div ui-view></div>
+		</div>
 
+		<footer class="page-footer">
+		  <div class="footer-copyright">
+		    <div class="container">
+		    <a class="grey-text text-lighten-4 left" href="http://carinetodmia.com" target="_blank"> © 2014 Carine Todmia </a>
+		    <a class="grey-text text-lighten-4 right" href="http://twitter.com/cinfinitymedia" target="_blank">@cinfinitymedia</a>
+		    </div>
+		  </div>
+		</footer>
 
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
-<script src="init.js"></script>
-<script src="app.js"></script>
-<script src="controllers/navbarController.js"></script>
-<script src="controllers/signin.js"></script>
-<script src="controllers/studentListController.js"></script>
-<script src="controllers/studentController.js"></script>
-<script src="controllers/newAssignmentController.js"></script>
-<script src="controllers/assignmentListController.js"></script>
-<script src="controllers/assignmentController.js"></script>
-<script src="services/assignmentservice.js"></script>
-<script src="services/authenticateService.js"></script>
-<script src="services/studentService.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+	<script src="init.js"></script>
+	<script src="app.js"></script>
+	<script src="controllers/navbarController.js"></script>
+	<script src="controllers/signin.js"></script>
+	<script src="controllers/studentListController.js"></script>
+	<script src="controllers/studentController.js"></script>
+	<script src="controllers/newAssignmentController.js"></script>
+	<script src="controllers/assignmentListController.js"></script>
+	<script src="controllers/assignmentController.js"></script>
+	<script src="services/assignmentservice.js"></script>
+	<script src="services/authenticateService.js"></script>
+	<script src="services/studentService.js"></script>
+	
+	</body>
+</html>

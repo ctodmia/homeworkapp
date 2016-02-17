@@ -1,41 +1,42 @@
 <div class="container">
 	
-<input-field>
-    <input type="text" ng-model="title">
-    <label>Title</label>
-</input-field>
-<input-field>
-    <textarea ng-model="question" class="materialize-textarea"></textarea>
-    <label>Question</label>
-</input-field>
-</br>
-<label for="inputCreated">Due Date</label>
-<input input-date
-    type="text"
-    name="created"
-    id="inputCreated"
-    ng-model="currentTime"
-    container="body"
-    format="dd/mm/yyyy"
-    months-full="{{ month }}"
-    months-short="{{ monthShort }}"
-    weekdays-full="{{ weekdaysFull }}"
-    weekdays-short="{{ weekdaysShort }}"
-    weekdays-letter="{{ weekdaysLetter }}"
-    disable=""
-    min="{{ minDate }}"
-    max="{{ maxDate }}"
-    today="today"
-    clear="clear"
-    close="close"
-    select-years="16"
-    on-start="onStart()"
-    on-render="onRender()"
-    on-open="onOpen()"
-    on-close="onClose()"
-    on-set="onSet()"
-    on-stop="onStop()" />
-<button class="waves-effect waves-light btn" ng-click="addWork()">Add Assignment</button>
+    <input-field>
+        <input type="text" ng-model="title">
+        <label>Title</label>
+    </input-field>
+    <input-field>
+        <textarea ng-model="question" class="materialize-textarea"></textarea>
+        <label>Question</label>
+    </input-field>
+    </br>
+    <label for="inputCreated">Due Date</label>
+    <input input-date
+        type="text"
+        name="created"
+        id="inputCreated"
+        ng-model="currentTime"
+        container="body"
+        format="dd/mm/yyyy"
+        months-full="{{ month }}"
+        months-short="{{ monthShort }}"
+        weekdays-full="{{ weekdaysFull }}"
+        weekdays-short="{{ weekdaysShort }}"
+        weekdays-letter="{{ weekdaysLetter }}"
+        disable=""
+        min="{{ minDate }}"
+        max="{{ maxDate }}"
+        today="today"
+        clear="clear"
+        close="close"
+        select-years="16"
+        on-start="onStart()"
+        on-render="onRender()"
+        on-open="onOpen()"
+        on-close="onClose()"
+        on-set="onSet()"
+        on-stop="onStop()" />
 
-<button class="waves-effect waves-light btn" ui-sref="assignmentlist">View All Assignments</button>
+    <button class="waves-effect waves-light btn" ng-click="addWork()">Add Assignment</button>
+    <button class="waves-effect waves-light btn" ui-sref="assignmentlist">View All Assignments</button>
+
 </div>
