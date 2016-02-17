@@ -7,7 +7,7 @@ var questionSchema = new Schema({
 	title: String, 
 	topic: String,
 	date: String,
-	answers: [{type: Schema.ObjectId, ref: 'Answer'}]
+	responses: []
 });
 
 var Question = mongoose.model("Question", questionSchema);

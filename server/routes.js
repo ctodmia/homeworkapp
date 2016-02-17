@@ -78,9 +78,9 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post('/newassignment', auth, function(req, res, next) {
+	app.post('/newassignment', function(req, res, next) {
 		question = new Question();
-		question.user = req.payload.username;
+		question.user = req.body.username;
 		question.title = req.body.title;
 		question.topic = req.body.question;
 		question.date = req.body.date;
@@ -119,13 +119,55 @@ module.exports = function(app) {
 
 	app.post('/individualwork/:assigned/answer', function(req, res) {
 		console.log('can we get the currrent user data in req.body', req.body)
-		console.log('this is the answer payload', req.payload)
-		// var answer = new Answer();
-		// answer.response = req.body.response;
-		// answer._creator = req.body._id
-		// asnser.save(function(data) {
-		// 	res.json(data)
-		// })
+		console.log('this is the answer assignment', req.assignment)
+		User.findOne({username: req.body.author}, function(err, foundUser) {
+			if(err) {
+				return err;
+			}
+			if(!foundUser) {
+				console.log('this is the found login user', foundUser);
+				return res.status(400).json({message: 'they dont exist'})
+			}
+			console.log('found user for answering', foundUser)
+			var answer = new Answer();
+			answer._creator = foundUser._id;
+			answer.response = req.body.body;
+			answer.topic = req.assignment._id;
+			answer.save(function(err, data) {
+				if(err) {
+					return err;
+				}
+				console.log('the saved answer data', data)
+				Question.findOne({_id: req.assignment._id}, function(err, topic) {
+					if(err) {
+						return err;
+					}
+					if(!topic) {
+						return res.status(400).json({message: 'they dont exist'})
+					}
+					console.log('this is the topic', topic)
+					topic.responses.push(data);
+					topic.save(function(err, savedtopic) {
+						if(err) {
+							return err;
+						}
+						console.log('saved a topic response', savedtopic)
+					})
+				})
+				res.json(data)
+			})
+			Answer.findById(answer._id).populate('_creator').exec(function(err, answer) {
+				if(err) {
+					return err;
+				}
+				console.log("this is the answer._creator", answer._creator)
+				console.log("this is the answer", answer);
+
+			})
+			
+		})
+
+		
 	})
 
 

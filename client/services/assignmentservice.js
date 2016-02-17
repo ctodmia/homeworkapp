@@ -19,6 +19,11 @@ angular.module('homework')
 				return res.data;
 			})
 		}
+		obj.addAnswer = function(id, answer) {
+			console.log('this is new add answer', answer);
+			console.log('proper topic question id', id)
+			return $http.post('/individualwork/'+ id + '/answer', answer)
+		}
 
 		return obj; 
 	}])

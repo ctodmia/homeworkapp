@@ -3,15 +3,18 @@
 		<li>{{topic.title}}</li>
 		<li>{{topic.topic}}</li>
 	</ul>
+
 	<div ng-if="permission">
 		<input-field>
-		    <textarea ng-model="answer" class="materialize-textarea"></textarea>
+		    <textarea ng-model="answer.body" class="materialize-textarea"></textarea>
 		    <label>Question</label>
 		</input-field>
 		</br>
-		<button class="waves-effect waves-light btn" ng-click="submitAnswer()">Submit Answer</button>
+		<button class="waves-effect waves-light btn" ng-click="submitAnswer(answer)">Submit Answer</button>
 
 	</div>
+
+
 	<div class="login-needed" ng-if="!permission">
 		Sorry you need to be logged in to answer this question
 		<ul>
