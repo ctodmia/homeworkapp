@@ -6,8 +6,8 @@ var User = require('./server/models/UserSchema.js').user;
 var configPass = require('./server/passport.js');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var activateRoutes = require('./server/routes.js')
-var config = require('./server/config.js')
+var activateRoutes = require('./server/routes.js');
+var config = require('./server/config.js');
 
 require('./server/models/UserSchema.js');
 require('./server/models/QuestionSchema.js')

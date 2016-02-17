@@ -1,8 +1,11 @@
 angular.module('homework')
 	.controller('SigninController',['$scope', '$state', 'Auth', function($scope, $state, Auth){
 		$scope.user = {};
-		$scope.login = function(username) {
-			Auth.login({username: username}).error(function(error) {
+		$scope.returnuser = {};
+		$scope.login = function(user) {
+			
+			console.log('this the username trying to login ', user);
+			Auth.login(user).error(function(error) {
 				$scope.error = error;
 			}).then(function() {
 				$state.go('studentlist');

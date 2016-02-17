@@ -24,6 +24,7 @@ angular.module('homework')
 			if(auth.isLoggedIn()) {
 				var token = auth.getToken();
 				var payload = JSON.parse($window.atob(token.split('.')[1]));
+				console.log('this is the payload.username from the current', payload.username);
 
 				return payload.username;
 			}
@@ -45,8 +46,7 @@ angular.module('homework')
 			});
 		};
 
-		auth.logout = function(currentuser) {
-			console.log('this is user just logged out', currentuser)
+		auth.logout = function() {
 			$window.localStorage.removeItem('homework-token');
 
 		};

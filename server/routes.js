@@ -46,21 +46,41 @@ module.exports = function(app) {
 	});
 
 	app.post('/login', function(req, res, next) {
+		var authenticate;
 		console.log('login req.body', req.body)
 		if(!req.body.username){
 		  return res.status(400).json({message: 'Please fill out all fields'});
 		}
 
+		User.findOne({username: req.body.username}, function(err, founduser) {
+			if(err) {
+				return err;
+			}
+			// if(!founduser) {
+			// 	console.log('this is the found login user', founduser);
+			// 	return res.status(400).json({message: 'they dont exist'})
+			// }
+			authenticate = passport.authenticate('local');
+			console.log('this is authenticate', authenticate)
+			res.json({token: founduser.generateJWT()})
+
+		})
+
+
 		passport.authenticate('local', function(err, user, info){
-		  if(err){ return next(err); }
+		  if(err){ 
+		  	return next(err); 
+		  }
 		  console.log('this is local authenticated user', user)
 		  if(user){
-		    return res.json({token: user.generateJWT()});
+		    res.json({token: user.generateJWT()});
 		  } 
 		  // else {
 		  //   return res.status(401).json(info);
 		  // }
 		})(req, res, next);
+
+
 
 	});
 
