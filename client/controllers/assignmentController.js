@@ -13,5 +13,9 @@ angular.module('homework')
 			data = true; 
 			$state.go('home')
 		}
+
+		$scope.submitAnswer = function() {
+			
+		}
 		console.log('this is the current user', Auth.currentUser())
 	}])
