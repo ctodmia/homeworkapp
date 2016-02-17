@@ -5,6 +5,7 @@ var passport = require('passport');
 var config = require('./config.js');
 var User = require('./models/UserSchema.js').user;
 var Question = require('./models/QuestionSchema.js').question;
+var Answer = require('./models/AnswerSchema.js').answer;
 var auth = jwt({secret: config.JWT_TOKEN, userProperty: 'payload'});
 
 module.exports = function(app) {
@@ -61,7 +62,7 @@ module.exports = function(app) {
 				return res.status(400).json({message: 'they dont exist'})
 			}
 			authenticate = passport.authenticate('local');
-			console.log('this is authenticate', authenticate)
+	
 			res.json({token: founduser.generateJWT()})
 
 		})
@@ -116,6 +117,16 @@ module.exports = function(app) {
 		res.json(req.assignment)
 	})
 
+	app.post('/individualwork/:assigned/answer', function(req, res) {
+		console.log('can we get the currrent user data in req.body', req.body)
+		console.log('this is the answer payload', req.payload)
+		// var answer = new Answer();
+		// answer.response = req.body.response;
+		// answer._creator = req.body._id
+		// asnser.save(function(data) {
+		// 	res.json(data)
+		// })
+	})
 
 
 };

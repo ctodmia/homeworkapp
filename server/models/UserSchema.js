@@ -9,7 +9,7 @@ var userSchema = new Schema({
 	lastname: String,
 	username: String,
 	usertype: String,
-	topics: [{type: Schema.ObjectId, ref: 'Question'}]
+	// topics: [{type: Schema.ObjectId, ref: 'Question'}]
 });
 
 userSchema.methods.generateJWT = function() {
