@@ -14,7 +14,7 @@ angular.module('homework', [
 		resolve: {
 			onEnter: ['$state', 'Auth', function($state, Auth) {
 				if(Auth.isLoggedIn()) {
-					$state.go('studentlist');
+					$state.go('assignmentlist');
 				}
 			}]	
 		}

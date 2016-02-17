@@ -8,7 +8,7 @@ angular.module('homework')
 			Auth.login(user).error(function(error) {
 				$scope.error = error;
 			}).then(function() {
-				$state.go('studentlist');
+				$state.go('assignmentlist');
 			});
 
 		};
@@ -24,7 +24,7 @@ angular.module('homework')
 			}).error(function(error) {
 				$scope.error = error;
 			}).then(function() {
-				$state.go('studentlist');
+				$state.go('assignmentlist');
 			});
 		};
 

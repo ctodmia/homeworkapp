@@ -66,22 +66,6 @@ module.exports = function(app) {
 
 		})
 
-
-		passport.authenticate('local', function(err, user, info){
-		  if(err){ 
-		  	return next(err); 
-		  }
-		  console.log('this is local authenticated user', user)
-		  if(user){
-		    res.json({token: user.generateJWT()});
-		  } 
-		  // else {
-		  //   return res.status(401).json(info);
-		  // }
-		})(req, res, next);
-
-
-
 	});
 
 	app.get('/getAllUsers', function(req, res) {

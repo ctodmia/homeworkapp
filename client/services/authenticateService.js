@@ -47,6 +47,7 @@ angular.module('homework')
 		};
 
 		auth.logout = function() {
+			
 			$window.localStorage.removeItem('homework-token');
 
 		};
