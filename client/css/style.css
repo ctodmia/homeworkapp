@@ -46,9 +46,3 @@ footer: {
     /*overflow: hidden;*/
   }
 
- .register {
-  	/*box-sizing: border-box;*/
-  	height: 450px;
-  	overflow: scroll;
-  	color: orange;
-  }
