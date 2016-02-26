@@ -10,12 +10,12 @@ section#signin{
 	margin-top: 50px;
 	background-size: cover;
 
-	height: 435px;
+	/*height: 435px;*/
 
 }
 body {
-	height: 100%;
-	overflow: scroll;
+	/*height: 100%;*/
+	/*overflow: scroll;*/
 }
 
 .body {
@@ -26,3 +26,20 @@ body {
 .view {
 	background-size: cover;
 }
+footer: {
+	position: bottom; 
+    bottom: 0px; 
+    width: 100%; 
+    height: 60px; 
+    background-color: black;
+}
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
