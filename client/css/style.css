@@ -8,8 +8,21 @@ section#signin{
 
 .container.body {
 	margin-top: 50px;
-	height: 450px;
+	background-size: cover;
+
+	height: 435px;
+
 }
 body {
-	height: 100%
+	height: 100%;
+	overflow: scroll;
+}
+
+.body {
+	background-size: cover;
+	/*height: 1000px;*/
+	/*overflow: none;*/
+}
+.view {
+	background-size: cover;
 }
