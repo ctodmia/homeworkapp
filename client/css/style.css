@@ -30,7 +30,7 @@ footer: {
 	position: bottom; 
     bottom: 0px; 
     width: 100%; 
-    height: 60px; 
+    height: 60px;
     background-color: black;
 }
 
@@ -38,8 +38,16 @@ footer: {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    overflow: hidden;
   }
 
   main {
     flex: 1 0 auto;
+    overflow: hidden;
+  }
+
+ .register {
+  	/*box-sizing: border-box;*/
+  	overflow: scroll;
+  	color: orange;
   }
