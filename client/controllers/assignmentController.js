@@ -18,13 +18,16 @@ angular.module('homework')
 				topic: Topic._id
 			}).success(function(data) {
 				$scope.answer.body = '';
+				$state.go('assignmentlist');
 			})
 		}
 
 		if(currentUser){
 			$scope.permission = true;
+			console.log(currentUser)
 		} else {
 			$scope.permission = false;
+			console.log(currentUser)
 		}
 		
 	}])

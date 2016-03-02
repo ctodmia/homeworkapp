@@ -1,23 +1,6 @@
-<main>
-<div class="register">
-	<div class="container">
-		
-		<div id="login" ng-if="!register">
-			</br>
-			</br>
-			<input-field>
-				<input type="text" ng-model="returnuser.username" length="150">
-				<label>Enter username</label>
-			</input-field>
-			<button class="waves-effect waves-light btn" ng-click="login(returnuser)">Login</button>
-			</br>
-			</br>
-			<p>
-				<a href="#" ng-click="newUser()">or Signup for a FREE account</a>
-			</p>
-		</div>
-
-		<div id="register" ng-if="register">
+<div class="container">
+	
+	<div id="register">
 			<p>Sign in</p>
 			<input-field>
 			  <input type="text" ng-model="user.firstname" length="150">
@@ -51,7 +34,5 @@
 			</p>
 
 		</div>
-		
-	</div>
-	</div>
-</main>
+
+</div>

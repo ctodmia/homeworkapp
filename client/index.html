@@ -12,12 +12,12 @@
 	<body ng-controller="NavbarController">
 		<nav class="navbar-fixed">
 			<div class="nav-wrapper">
-				<a href="/" class="brand-logo right">QuickWork</a>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<a href="#" ui-sref="home" class="brand-logo left">QuickWork</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
 				  <li><a href="#" ui-sref="newassignment">Add New</a></li>
 				  <li><a href="#" ui-sref="assignmentlist">Assignments</a></li>
 				  <li><a href="#" ui-sref="studentlist">Students</a></li>
-				  <li><a href="#" ui-sref="home">Login</a></li>
+				  <li><a href="#" ui-sref="login">Login</a></li>
 				  <li><a href="#" ng-click="logout()">Logout</a></li>
 				  <li><a href="https://github.com/ctodmia/homeworkapp" target="_blank">About</a></li>
 				</ul>
@@ -30,6 +30,8 @@
 				</ul>
 			</div>
 		</nav>
+		<!-- <p ng-show="userIn">Welcome, {{currentUser}}</p>
+		<p ng-hide="userIn">You are currently not logged in</p> -->
 
 		<!-- <main> -->
 			<main ui-view class ="view"></main>

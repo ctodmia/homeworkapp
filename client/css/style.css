@@ -13,9 +13,14 @@ section#signin{
 	/*height: 435px;*/
 
 }
+
+.container {
+  margin-top: 50px;
+}
 body {
 	/*height: 100%;*/
 	/*overflow: scroll;*/
+  overflow: cover;
 }
 
 .body {

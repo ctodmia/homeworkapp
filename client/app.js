@@ -8,8 +8,21 @@ angular.module('homework', [
 
 	.state('home', {
 		url: '/',
+		templateUrl: 'views/signupView.html',
+		controller: 'NavbarController',
+		resolve: {
+			onEnter: ['$state', 'Auth', function($state, Auth) {
+				if(Auth.isLoggedIn()) {
+					$state.go('assignmentlist');
+				}
+			}]	
+		}
+	})
+
+	.state('login', {
+		url: '/login',
 		templateUrl: 'views/signinView.html',
-		controller: 'SigninController',
+		controller: 'NavbarController',
 		resolve: {
 			onEnter: ['$state', 'Auth', function($state, Auth) {
 				if(Auth.isLoggedIn()) {

@@ -1,5 +1,5 @@
 angular.module('homework')
-	.controller('NewAssignmentController', ['$scope', 'Assign', function($scope, Assign){
+	.controller('NewAssignmentController', ['$scope', 'Assign', '$state', function($scope, Assign, $state){
 		
 		var currentTime = new Date();
 		$scope.currentTime = currentTime;
@@ -20,6 +20,10 @@ angular.module('homework')
 				title: $scope.title,
 				question: $scope.question,
 				date: $scope.currentTime
+			}).success(function(data) {
+				$scope.title = '';
+				$scope.question = '';
+				$state.go('assignmentlist');
 			})
 		};
 
