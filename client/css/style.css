@@ -39,6 +39,17 @@ footer: {
     background-color: black;
 }
 
+nav {
+  background-color: #67D6E0;
+}
+
+footer.page-footer {
+  background-color: #67D6E0;
+}
+
+.btn, .btn-large {
+  background-color: #E87272;
+}
   body {
     display: flex;
     min-height: 100vh;
